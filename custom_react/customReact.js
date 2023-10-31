@@ -14,8 +14,9 @@ function render(elem, container) {
     // domElement.setAttribute('href', elem.props.href);
     // domElement.setAttribute('target', elem.props.target);
     domElement.innerHTML = elem.text;
+
     for (const prop in elem.props) {
-        if (prop === 'text') continue;
+        // if (prop === 'text') continue;
         domElement.setAttribute(prop, elem.props[prop])
 
     }

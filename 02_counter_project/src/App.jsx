@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css'
 
 function App() {
-  let [counter, setCounter] = useState(10);
+  let [counter, setCounter] = useState(0);
   // let counter = 10;
 
   const addValue = () => {
