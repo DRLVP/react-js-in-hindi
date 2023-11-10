@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <h1 className='bg-red-600 font-bold text-slate-950 p-8 text-5xl text-center' >Tailwind test</h1>
+      <h1 className='bg-red-400 font-bold text-slate-950 p-8 text-5xl text-center shadow-2xl' >Tailwind test</h1>
 
       <Card userName="DRLOV" />
 

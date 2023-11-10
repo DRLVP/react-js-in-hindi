@@ -40,7 +40,7 @@ function App() {
     <>
       <h1 className='text-white text-center font-bold text-5xl mt-7'>Password Generator</h1>
 
-      <div className='w-full max-w-lg shadow-xl bg-slate-700 mx-auto mt-8 rounded-md text-red-500 p-4'>
+      <div className='w-screen max-w-lg shadow-xl bg-slate-700 mx-auto mt-8 rounded-md text-red-500 p-4'>
         <div className='w-full flex justify-between shadow-2xl'>
           <input type="text"
             value={password}
