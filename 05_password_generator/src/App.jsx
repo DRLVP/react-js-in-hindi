@@ -6,6 +6,8 @@ function App() {
   const [length, setLength] = useState(8);
   const [numAllowed, setNumber] = useState(false);
   const [charAllowed, setCharacter] = useState(false);
+  const [wordAllowed, setWord] = useState("");
+
   const [password, setPassword] = useState("");
 
   // password generator
@@ -13,8 +15,8 @@ function App() {
     let pass = "";
     let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxys";
     if (numAllowed) string += "0123456789";
-    if (charAllowed) string += "!@#$%^&*-_~`";
-
+    if (charAllowed) string += "!@#$%^&*-_~";
+    if (wordAllowed) string += ["pagol", "mudur", "lemon"];
     for (let i = 1; i <= length; i++) {
       let char = Math.floor(Math.random() * string.length + 1);
       pass += string.charAt(char);
@@ -40,7 +42,7 @@ function App() {
     <>
       <h1 className='text-white text-center font-bold text-5xl mt-7'>Password Generator</h1>
 
-      <div className='w-screen max-w-lg shadow-xl bg-slate-700 mx-auto mt-8 rounded-md text-red-500 p-4'>
+      <div className='w-full max-w-lg shadow-xl bg-cyan mx-auto mt-8 rounded-md text-red-500 p-4'>
         <div className='w-full flex justify-between shadow-2xl'>
           <input type="text"
             value={password}
@@ -57,8 +59,8 @@ function App() {
         <div className='flex gap-8 justify-center text-lg font-bold'>
           <div className='flex items-center justify-center gap-x-1'>
             <input type="range"
-              min={6}
-              max={30}
+              min={8}
+              max={20}
               value={length}
               className='cursor-pointer'
               onChange={(e) => { setLength(e.target.value) }}
@@ -82,6 +84,15 @@ function App() {
               onChange={() => { setCharacter((prev) => !prev) }}
             />
             <label className='text-gray-400'>Character</label>
+          </div>
+
+          <div className='flex items-center gap-x-1'>
+            <input type="checkbox"
+              defaultChecked={wordAllowed}
+              id='characterInput'
+              onChange={() => { setWord((prev) => !prev) }}
+            />
+            <label className='text-gray-400'>Word</label>
           </div>
         </div>
 
