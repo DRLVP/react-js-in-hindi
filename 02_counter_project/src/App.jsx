@@ -18,6 +18,11 @@ function App() {
     }
   }
 
+  useEffect(() => {
+
+
+  }, [counter, addValue, removeValue])
+
   return (
     <>
       <h1>Chai Aur React || DRLOV</h1>

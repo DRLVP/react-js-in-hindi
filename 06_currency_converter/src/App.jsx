@@ -12,6 +12,7 @@ function App() {
   const currencyInfo = useCurrencyInfo(from);
   const options = Object.keys(useCurrencyInfo);
 
+  // SWAP CURRENCY FROM TO TO
   const swap = () => {
     setFrom(to);
     setTo(from);
@@ -19,6 +20,7 @@ function App() {
     setAmount(convertedAmount);
   }
 
+  // CONVERT AMOUNT
   const convert = () => {
     setConvertedAmount(amount * currencyInfo[to]);
   }
@@ -27,7 +29,7 @@ function App() {
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url('https://th.bing.com/th/id/R.2b74bbad77093749a928d33f000bbe58?rik=OdCZPvPtFP7Izw&pid=ImgRaw&r=0')`,
+        backgroundImage: `url('https://cdn.pixabay.com/photo/2016/11/27/21/42/stock-1863880_1280.jpg')`,
       }}
     >
       <div className="w-full">

@@ -6,57 +6,71 @@ function App() {
   const [length, setLength] = useState(8);
   const [numAllowed, setNumber] = useState(false);
   const [charAllowed, setCharacter] = useState(false);
-  const [wordAllowed, setWord] = useState("");
 
   const [password, setPassword] = useState("");
 
-  // password generator
+  /******************************************
+                PASSWORD GENERATOR 
+  ******************************************/
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxys";
-    if (numAllowed) string += "0123456789";
-    if (charAllowed) string += "!@#$%^&*-_~";
-    if (wordAllowed) string += ["pagol", "mudur", "lemon"];
+    if (numAllowed) string += "888888888888888888";
+    if (charAllowed) string += "??????????????????????";
+
+    // generate password using loop
     for (let i = 1; i <= length; i++) {
+      // character index
       let char = Math.floor(Math.random() * string.length + 1);
+      // pick the character from index
       pass += string.charAt(char);
     }
 
     setPassword(pass);
   }, [length, numAllowed, charAllowed, setPassword]);
 
-  // password copy
+
+
+  /*********************************
+                PASSWORD COPY TO CLIPBOARD 
+  **********************************/
   const copyPasswordToClipboard = useCallback(() => {
     passwordRef.current?.select();
+    // passwordRef.current?.setSelectionRange(0, 5);
     window.navigator.clipboard.writeText(password);
   }, [password]);
 
-  // useEffect hooks for re-run method when manupulate the dependecies
-  useEffect(() => { passwordGenerator() }, [length, numAllowed, charAllowed, setPassword])
 
-  // +++++++++++++++ useRef hooks for reference ++++++++++++
+  /***********************************
+    useEffect hooks for re-run method when manupulate the dependecies 
+  ************************************/
+  useEffect(() => { passwordGenerator() }, [length, numAllowed, charAllowed])
 
+
+  /******************************************
+            USEREF HOOK FOR PASSWORD REFFERENCE
+   ******************************************/
   const passwordRef = useRef(null);
 
   return (
     <>
-      <h1 className='text-white text-center font-bold text-5xl mt-7'>Password Generator</h1>
+      <h1 className='text-white text-center font-bold text-5xl mt-20'>Password Generator</h1>
 
-      <div className='w-full max-w-lg shadow-xl bg-cyan mx-auto mt-8 rounded-md text-red-500 p-4'>
-        <div className='w-full flex justify-between shadow-2xl'>
+      <div className='max-w-sm flex-col shadow-xl bg-cyan mx-auto mt-20 rounded-md text-red-500 p-4 bg-indigo-950'>
+        <div className='w-full flex flex-col justify-center  gap-4 shadow-2xl p-3'>
           <input type="text"
             value={password}
-            className='w-3/4 outline-none rounded-md bg-cyan-950  text-white p-4 text-2xl'
+            className='w-full outline-none rounded-sm bg-cyan-950  text-white p-4 text-2xl'
             placeholder='password'
             readOnly
             ref={passwordRef}
           />
           <button
             onClick={copyPasswordToClipboard}
-            className='outline-none bg-blue-600 w-1/5 rounded-md text-2xl text-white'>copy</button>
+            className='w-full  bg-blue-600 rounded-sm text-2xl text-white m-auto py-2'>copy</button>
         </div>
 
-        <div className='flex gap-8 justify-center text-lg font-bold'>
+        <div className='flex gap-8 justify-center text-lg font-bold mt-4'>
           <div className='flex items-center justify-center gap-x-1'>
             <input type="range"
               min={8}
@@ -86,14 +100,7 @@ function App() {
             <label className='text-gray-400'>Character</label>
           </div>
 
-          <div className='flex items-center gap-x-1'>
-            <input type="checkbox"
-              defaultChecked={wordAllowed}
-              id='characterInput'
-              onChange={() => { setWord((prev) => !prev) }}
-            />
-            <label className='text-gray-400'>Word</label>
-          </div>
+
         </div>
 
       </div>

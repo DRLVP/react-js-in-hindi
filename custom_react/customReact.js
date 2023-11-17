@@ -1,4 +1,4 @@
-const root = document.querySelector("#root");
+const root = document.querySelector("#pagol");
 
 const reactElement = {
     type: 'a',
@@ -9,7 +9,16 @@ const reactElement = {
     text: 'click here to visit google'
 }
 
-function render(elem, container) {
+const reactElementNew = {
+    type: 'button',
+    props: {
+        type: 'text',
+        placeholder: 'Enter your name'
+    },
+    text: 'enter your name'
+}
+
+const render = (elem, container) => {
     const domElement = document.createElement(elem.type);
     // domElement.setAttribute('href', elem.props.href);
     // domElement.setAttribute('target', elem.props.target);
@@ -24,4 +33,5 @@ function render(elem, container) {
     container.appendChild(domElement);
 }
 
-render(reactElement, root);
+render(reactElement, pagol);
+render(reactElementNew, pagol)
