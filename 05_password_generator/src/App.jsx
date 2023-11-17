@@ -15,8 +15,8 @@ function App() {
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxys";
-    if (numAllowed) string += "888888888888888888";
-    if (charAllowed) string += "??????????????????????";
+    if (numAllowed) string += "0123456789";
+    if (charAllowed) string += "*-^~";
 
     // generate password using loop
     for (let i = 1; i <= length; i++) {
@@ -56,8 +56,8 @@ function App() {
     <>
       <h1 className='text-white text-center font-bold text-5xl mt-20'>Password Generator</h1>
 
-      <div className='max-w-sm flex-col shadow-xl bg-cyan mx-auto mt-20 rounded-md text-red-500 p-4 bg-indigo-950'>
-        <div className='w-full flex flex-col justify-center  gap-4 shadow-2xl p-3'>
+      <div className='max-w-lg flex-col shadow-xl bg-cyan mx-auto mt-20 rounded-md text-red-500 p-4 bg-neutral-800'>
+        <div className='w-full flex flex-col justify-center  gap-4 shadow-2xl backdrop-blur-lg p-3'>
           <input type="text"
             value={password}
             className='w-full outline-none rounded-sm bg-cyan-950  text-white p-4 text-2xl'
@@ -67,11 +67,11 @@ function App() {
           />
           <button
             onClick={copyPasswordToClipboard}
-            className='w-full  bg-blue-600 rounded-sm text-2xl text-white m-auto py-2'>copy</button>
+            className='w-2/4  bg-blue-600 rounded-sm text-2xl text-white m-auto py-2 drop-shadow-lg'>copy</button>
         </div>
 
-        <div className='flex gap-8 justify-center text-lg font-bold mt-4'>
-          <div className='flex items-center justify-center gap-x-1'>
+        <div className='flex gap-6 justify-center text-lg font-bold mt-4'>
+          <div className='flex  items-center justify-center gap-x-1'>
             <input type="range"
               min={8}
               max={20}
